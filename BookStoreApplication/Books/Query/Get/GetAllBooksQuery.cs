@@ -1,4 +1,5 @@
 ﻿using BookStoreApplication.Dtos;
+using BookStoreCore.Entities;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BookStoreApplication.Books.Query.Get
 {
-    public class GetAllBooksQuery : IRequest<IEnumerable<BookDTO>>
+    public class GetAllBooksQuery : IRequest<IEnumerable<Book>>
     {
     }
 }

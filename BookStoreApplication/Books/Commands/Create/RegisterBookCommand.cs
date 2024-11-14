@@ -1,4 +1,5 @@
 ﻿using BookStoreApplication.Dtos;
+using BookStoreCore.Entities;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -10,11 +11,11 @@ namespace BookStoreApplication.Books.Commands.Create
 {
     public class RegisterBookCommand : IRequest
     {
-        public BookDTO Book { get; }
+        public Book Book { get; }
 
-        public RegisterBookCommand(BookDTO bookDTO)
+        public RegisterBookCommand(Book book)
         {
-            Book = bookDTO;
+            Book = book;
         }
 
     }

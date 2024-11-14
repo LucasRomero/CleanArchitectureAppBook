@@ -24,23 +24,12 @@ namespace BookStoreApplication.Books.Commands.Create
         public async Task Handle(RegisterBookCommand request, CancellationToken cancellationToken)
         {
             // falta validacion (libreria)
-            // falta mapper (libreria)
 
-            var bookDto = request.Book;
+            var book = request.Book;
 
-            var author = await _authorRepository.GetByIdAsync(bookDto.AuthorId);
+            var author = await _authorRepository.GetByIdAsync(book.AuthorId);
 
             if (author == null) { throw new Exception("The author is not registered"); }
-
-            var book = new Book
-            {
-                AuthorId = bookDto.AuthorId,
-                Genre = bookDto.Genre,
-                PageCount = bookDto.PageCount,
-                Title = bookDto.Title,
-                Author = author,
-                Year = bookDto.Year,
-            };
 
             await _bookRepository.AddAsync(book);
 

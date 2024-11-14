@@ -3,6 +3,7 @@ using BookStoreApplication;
 using Microsoft.EntityFrameworkCore;
 using BookStoreCore.Interfaces;
 using BookStoreInfrastructure.Repositories;
+using BookStoreAPI.Util;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +18,11 @@ builder.Services.AddSwaggerGen();
 builder.Services
 .AddAplication();
 
+// Automapper
+
+builder.Services.AddAutoMapper(typeof(MappingProfile).Assembly);
+
+// Injections
 
 builder.Services.AddScoped<IBookRepository, BookRepository>();
 builder.Services.AddScoped<IAuthorRepository, AuthorRepository>();
