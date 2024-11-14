@@ -13,5 +13,6 @@ namespace BookStoreApplication.Dtos
         public string Genre { get; set; } = string.Empty;
         public int PageCount { get; set; }
         public int AuthorId { get; set; }
+        public int Status { get; set; }
     }
 }
