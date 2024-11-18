@@ -25,12 +25,9 @@ namespace BookStoreAPI.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> RegisterBook([FromBody] BookDTO bookDTO)
+        public async Task<IActionResult> RegisterBook([FromBody] CreateBookRequest request)
         {
-
-            var book = _mapper.Map<Book>(bookDTO);
-
-            var command = new RegisterBookCommand(book);
+            var command = new CreateBookCommand(request);
             await _mediator.Send(command);
 
             return Ok("Libro registrado exitosamente");

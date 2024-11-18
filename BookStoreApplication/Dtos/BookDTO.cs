@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BookStoreCore.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,7 @@ namespace BookStoreApplication.Dtos
 {
     public class BookDTO
     {
+        public int Id { get; set; }
         public string Title { get; set; } = string.Empty;
         public int Year { get; set; }
         public string Genre { get; set; } = string.Empty;

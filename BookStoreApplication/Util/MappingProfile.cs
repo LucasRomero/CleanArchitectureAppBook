@@ -2,7 +2,7 @@
 using BookStoreApplication.Dtos;
 using BookStoreCore.Entities;
 
-namespace BookStoreAPI.Util
+namespace BookStoreApplication.Util
 {
     public class MappingProfile: Profile
     {

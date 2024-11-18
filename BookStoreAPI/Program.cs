@@ -3,7 +3,7 @@ using BookStoreApplication;
 using Microsoft.EntityFrameworkCore;
 using BookStoreCore.Interfaces;
 using BookStoreInfrastructure.Repositories;
-using BookStoreAPI.Util;
+using BookStoreAPI.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,10 +17,6 @@ builder.Services.AddSwaggerGen();
 
 builder.Services
 .AddAplication();
-
-// Automapper
-
-builder.Services.AddAutoMapper(typeof(MappingProfile).Assembly);
 
 // Injections
 
@@ -45,6 +41,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 app.UseAuthorization();
 

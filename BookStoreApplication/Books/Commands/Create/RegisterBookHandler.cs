@@ -1,4 +1,6 @@
-﻿using BookStoreCore.Entities;
+﻿using AutoMapper;
+using BookStoreApplication.Dtos;
+using BookStoreCore.Entities;
 using BookStoreCore.Interfaces;
 using MediatR;
 using System;
@@ -9,30 +11,31 @@ using System.Threading.Tasks;
 
 namespace BookStoreApplication.Books.Commands.Create
 {
-    public class RegisterBookHandler : IRequestHandler<RegisterBookCommand>
+    public class RegisterBookHandler : IRequestHandler<CreateBookCommand, CreateBookResponse>
     {
-
         private readonly IBookRepository _bookRepository;
         private readonly IAuthorRepository _authorRepository;
+        private readonly IMapper _mapper;
 
-        public RegisterBookHandler(IBookRepository bookRepository, IAuthorRepository authorRepository)
+        public RegisterBookHandler(IBookRepository bookRepository, IAuthorRepository authorRepository, IMapper mapper)
         {
             _bookRepository = bookRepository;
             _authorRepository = authorRepository;
+            _mapper = mapper;
         }
 
-        public async Task Handle(RegisterBookCommand request, CancellationToken cancellationToken)
+        public async Task<CreateBookResponse> Handle(CreateBookCommand request, CancellationToken cancellationToken)
         {
-            // falta validacion (libreria)
+            var bookEntity = _mapper.Map<Book>(request.request.Book); // Asegúrate de que el Request tenga Book
+            var createdBook = await _bookRepository.AddAsync(bookEntity);
+            var createdBookDTO = _mapper.Map<BookDTO>(createdBook);
 
-            var book = request.Book;
-
-            var author = await _authorRepository.GetByIdAsync(book.AuthorId);
-
-            if (author == null) { throw new Exception("The author is not registered"); }
-
-            await _bookRepository.AddAsync(book);
-
+            return new CreateBookResponse
+            {
+                Book = createdBookDTO,
+                Message = "Book created successfully.",
+                Success = true
+            };
         }
     }
 }
