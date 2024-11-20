@@ -22,6 +22,7 @@ builder.Services
 
 builder.Services.AddScoped<IBookRepository, BookRepository>();
 builder.Services.AddScoped<IAuthorRepository, AuthorRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 // DB conection
 

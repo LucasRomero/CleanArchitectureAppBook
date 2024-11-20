@@ -15,12 +15,10 @@ namespace BookStoreAPI.Controllers
     {
 
         private readonly IMediator _mediator;
-        private readonly IMapper _mapper;
 
         public BooksController(IMediator mediator, IMapper mapper)
         {
             _mediator = mediator;
-            _mapper = mapper;
         }
 
 
@@ -37,11 +35,10 @@ namespace BookStoreAPI.Controllers
         public async Task<IActionResult> GetAllBooks()
         {
             var query = new GetAllBooksQuery();
+
             IEnumerable<Book> books = await _mediator.Send(query);
 
-            var bookDtos = _mapper.Map<IEnumerable<BookDTO>>(books);
-
-            return Ok(bookDtos);
+            return Ok(books);
         }
 
     }

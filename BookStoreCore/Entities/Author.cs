@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BookStoreCore.Entities
 {
-    public class Author: BaseEntity
+    public sealed class Author: BaseEntity
     {
         public string FullName { get; set; } = string.Empty;
         public DateTime DateOfBirth { get; set; }

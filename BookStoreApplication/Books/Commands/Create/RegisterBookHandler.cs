@@ -26,7 +26,7 @@ namespace BookStoreApplication.Books.Commands.Create
 
         public async Task<CreateBookResponse> Handle(CreateBookCommand request, CancellationToken cancellationToken)
         {
-            var bookEntity = _mapper.Map<Book>(request.request.Book); // Asegúrate de que el Request tenga Book
+            var bookEntity = _mapper.Map<Book>(request.request.Book);
             var createdBook = await _bookRepository.AddAsync(bookEntity);
             var createdBookDTO = _mapper.Map<BookDTO>(createdBook);
 

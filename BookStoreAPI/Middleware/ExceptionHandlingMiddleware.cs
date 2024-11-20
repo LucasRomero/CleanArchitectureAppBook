@@ -57,13 +57,14 @@ namespace BookStoreAPI.Middleware
                     "Validation error",
                     "one or more validation errors has ocurred",
                     validationException.Errors),
-                    _ => new ExceptionDetails(
-                        StatusCodes.Status500InternalServerError,
-                        "ServerError",
-                        "Server Error",
-                        "An unexpected error has ocurred",
-                        null
-                        )
+
+                _ => new ExceptionDetails(
+                    StatusCodes.Status500InternalServerError,
+                    "ServerError",
+                    "Server Error",
+                    "An unexpected error has ocurred",
+                    null
+                    )
             };
 
         }

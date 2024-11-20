@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BookStoreCore.Entities
 {
-    public class Book: BaseEntity
+    public sealed class Book: BaseEntity
     {
         public string Title { get; set; } = string.Empty;
         public int Year { get; set; }
