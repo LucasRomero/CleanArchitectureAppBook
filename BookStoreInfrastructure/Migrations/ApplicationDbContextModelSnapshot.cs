@@ -50,7 +50,7 @@ namespace BookStoreInfrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Authors", (string)null);
+                    b.ToTable("Authors");
                 });
 
             modelBuilder.Entity("BookStoreCore.Entities.Book", b =>
@@ -86,7 +86,7 @@ namespace BookStoreInfrastructure.Migrations
 
                     b.HasIndex("AuthorId");
 
-                    b.ToTable("Books", (string)null);
+                    b.ToTable("Books");
                 });
 
             modelBuilder.Entity("BookStoreCore.Entities.User", b =>
@@ -118,7 +118,7 @@ namespace BookStoreInfrastructure.Migrations
                     b.HasIndex("Email")
                         .IsUnique();
 
-                    b.ToTable("Users", (string)null);
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("BookStoreCore.Entities.Book", b =>
