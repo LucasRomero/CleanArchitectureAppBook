@@ -19,9 +19,13 @@ namespace BookStoreInfrastructure.Repositories
             _context = context;
         }
 
-        public Task<Author> AddAsync(Author item)
+        public async Task<Author> AddAsync(Author author)
         {
-            throw new NotImplementedException();
+            _context.Authors.Add(author);
+
+            await _context.SaveChangesAsync();
+
+            return author;
         }
 
         public Task<Author> DeleteAsync(int id)
