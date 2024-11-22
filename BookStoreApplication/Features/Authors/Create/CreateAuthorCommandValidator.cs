@@ -14,7 +14,7 @@ namespace BookStoreApplication.Features.Authors.Create
         {
             RuleFor(x => x.request.author.FullName)
                 .NotEmpty().WithMessage("Fullname is required.")
-                .MaximumLength(5).WithMessage("Fullname must not exceed 20 characters.");
+                .MaximumLength(20).WithMessage("Fullname must not exceed 20 characters.");
 
         }
 

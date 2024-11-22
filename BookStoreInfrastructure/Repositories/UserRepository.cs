@@ -23,7 +23,7 @@ namespace BookStoreInfrastructure.Repositories
         {
             _context.Add(user);
 
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return user;
         }
